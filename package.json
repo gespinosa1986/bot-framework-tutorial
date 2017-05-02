@@ -1,0 +1,22 @@
+{
+  "name": "mva-bots",
+  "version": "1.0.0",
+  "description": "Material para cursos de MVA sobre bots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelofelman/mva-bots.git"
+  },
+  "author": "Marcelo Felman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelofelman/mva-bots/issues"
+  },
+  "homepage": "https://github.com/marcelofelman/mva-bots#readme",
+  "dependencies": {
+    "botbuilder": "^3.7.0"
+  }
+}
