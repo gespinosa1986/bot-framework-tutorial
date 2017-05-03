@@ -30,11 +30,20 @@ bot.dialog('/', [
     function (session, results, next) {
         builder.Prompts.text(session, 'preguntar_nombre');
     },
-    function (session, results) {
+    function (session, results, next) {
         let nombre = results.response;
         let msj = session.localizer.gettext(session.preferredLocale(), 'saludar_nombre');
 
         session.send(msj + nombre);
+        
+        // Este next() nos sirve para la "prueba de la pizza"
+        //next();
+    },
+    function (session, results) {
+        builder.Prompts.confirm(session, 'pregunta_pizza', { listStyle: builder.ListStyle.button });
+    },
+    function (session, results) {
+        session.endDialog("Ok!");
     }
 ]);
 
