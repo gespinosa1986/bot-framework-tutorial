@@ -32,13 +32,20 @@ var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
 bot.dialog('/', dialog);
 
 // Esta función se ejecuta cuando el Intent == PreguntarPeso
-dialog.matches('OrdenarTaxi', [
+dialog.matches('ordenarTaxi', [
     function (session, args, next) {
         // Extraer las entidades reconocidas por LUIS
-        var barrios = builder.EntityRecognizer.findAllEntities(args.entities, 'Lugar');
+        var barrios = builder.EntityRecognizer.findAllEntities(args.entities, 'lugar');
 
-        if (barrios.length > 1) {
-            session.send(`Enviando un taxi a ${barrios[0]}`)
+        if (barrios.length > 0) {
+            let msj = 'Enviando un taxi';
+            msj += ` de **${barrios[0].entity}**`;
+
+            if(barrios.length > 1) {
+                msj += ` a **${barrios[1].entity}**`;
+            }
+
+            session.send(msj);
         }
         else {
             session.send('¿A dónde lo envío?');
@@ -46,7 +53,7 @@ dialog.matches('OrdenarTaxi', [
     }
 ]);
 
-dialog.matches('CancelarTaxi', [
+dialog.matches('cancelarTaxi', [
     function (session, args, next) {
         session.send('Ok, cancelaré tu taxi.')
     }
