@@ -27,8 +27,6 @@ let luisKey = process.env.LUIS_KEY;
 // Crear un procesador LUIS que apunte a nuestro modelo en el root (/)
 var model = `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/${luisApp}?subscription-key=${luisKey}&timezoneOffset=0.0&verbose=true`;
 
-console.log(model);
-
 var recognizer = new builder.LuisRecognizer(model);
 var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
 bot.dialog('/', dialog);

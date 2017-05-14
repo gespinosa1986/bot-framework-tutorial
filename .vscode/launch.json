@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/5. Procesamiento de Lenguaje Natural/luisEntities.js"
+            "program": "${workspaceRoot}/9. Otros/proactivo.js"
         },
         {
             "type": "node",
