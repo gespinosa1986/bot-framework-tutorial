@@ -20,13 +20,12 @@ server.post('/api/messages', connector.listen());
 // Dialogos
 bot.dialog('/', [
     function (session) {
-        builder.Prompts.text(session, '¿Cómo te llamas?');
+        builder.Prompts.text(session, '¿Cómo te llamas?', {
+            inputHint: builder.InputHint.expectingInput
+        });
     },
     function (session, results) {
-        session.sendTyping();
-        setTimeout(function () {
-            let msj = results.response;
-            session.send(`Hola ${msj}!`);
-        }, 3000);
+        let msj = results.response;
+        session.send(`Hola ${msj}!`);
     }
 ]);
