@@ -31,7 +31,7 @@ var recognizer = new builder.LuisRecognizer(model);
 var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
 bot.dialog('/', dialog);
 
-// Esta función se ejecuta cuando el Intent == PreguntarPeso
+// Esta función se ejecuta cuando el Intent == ordenarTaxi
 dialog.matches('ordenarTaxi', [
     function (session, args, next) {
         // Extraer las entidades reconocidas por LUIS

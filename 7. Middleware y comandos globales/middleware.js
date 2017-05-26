@@ -40,7 +40,7 @@ bot.dialog('/', [
 
 // Esta es la lógica de ejecución del middlware
 function logMensajeEntrante(session, next) {
-    console.log(session.message.text);
+    console.log('Estamos grabando: ' + session.message.text);
     next();
 }
 

@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/9. Otros/proactivo.js"
+            "program": "${workspaceRoot}/2. Creación de Bots simples/holaWeb.js"
         },
         {
             "type": "node",

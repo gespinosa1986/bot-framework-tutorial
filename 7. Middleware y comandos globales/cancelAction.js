@@ -51,6 +51,7 @@ bot.dialog('/', [
 .beginDialogAction('interrumpirDialogAction', '/Interrumpir', { matches: /^interrumpir$/i })
 
 // Este diálogo se dispara cuando el usuario dice "interrumpir" en el alcance del diálogo raíz
+// Se puede evitar la continuación llamando a la bandera "promptAfterAction"
 bot.dialog('/Interrumpir', [
     function (session) {
         builder.Prompts.confirm(session, '¿Te gusta que te interrumpan?');

@@ -37,7 +37,7 @@ bot.dialog('/', [
         session.send(msj + nombre);
         
         // Este next() nos sirve para la "prueba de la pizza"
-        //next();
+        next();
     },
     function (session, results) {
         builder.Prompts.confirm(session, 'pregunta_pizza', { listStyle: builder.ListStyle.button });
