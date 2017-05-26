@@ -74,15 +74,15 @@ Conceptos avanzados para desarrollo de bots.
 ## Algunos comandos útiles
 Para instalar el botbuilder:
 ```bash
-npm install -save botbuilder
+npm install --save botbuilder
 ```
 
 Para instalar restify:
 ```bash
-npm install -save botbuilder
+npm install --save botbuilder
 ```
 
 Para instalar dotenv:
 ```bash
-npm install -save dotenv
+npm install --save dotenv
 ```
