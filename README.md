@@ -72,6 +72,12 @@ Conceptos avanzados para desarrollo de bots.
 * **suggestedActions.js**: Ofrece sugerencias a tus usuarios, mejorando la experiencia.
 
 ## Algunos comandos útiles
+
+Para inicializar el directorio:
+```bash
+npm init
+```
+
 Para instalar el botbuilder:
 ```bash
 npm install --save botbuilder
@@ -79,7 +85,7 @@ npm install --save botbuilder
 
 Para instalar restify:
 ```bash
-npm install --save botbuilder
+npm install --save restify
 ```
 
 Para instalar dotenv:
