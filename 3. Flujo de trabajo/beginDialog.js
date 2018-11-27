@@ -1,3 +1,6 @@
+/**
+ * ejercicio 01
+ */
 var restify = require('restify');
 var builder = require('botbuilder');
 
@@ -18,6 +21,12 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 // Dialogos
+/**
+ * tenemos un dialogo raiz "/", donde se origina la conversacion con el bot
+ * donde le preguntamos al usuario como se llama, le escribimos un saludo
+ * y lo reenviamos al siguiente dialogo "/preguntarLugar"
+ * esto va creando la pila de dialogos.
+ */
 bot.dialog('/', [
     function (session) {
         builder.Prompts.text(session, '¿Cómo te llamas?');
@@ -29,7 +38,10 @@ bot.dialog('/', [
         session.beginDialog('/preguntarLugar');
     }
 ]);
-
+/**
+ * en este dialogo, preguntamos donde se encuentra la presona
+ * y finalmente le mandamos un saludo y finalizamos el dialogo.
+ */
 bot.dialog('/preguntarLugar', [
     function (session) {
         builder.Prompts.text(session, '¿Dónde estás?');

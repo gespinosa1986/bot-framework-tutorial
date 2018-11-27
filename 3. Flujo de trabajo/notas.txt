@@ -1,0 +1,12 @@
+podemos ver los dialogos como un 
+"set de pantallas en una app web donde el usuario esta en una pantalla principal y puede ir navegando a otras y volver a la principal"
+
+los dialogos se pueden apilar pero al final siempre terminamos volviendo al dialogo principal.
+
+metodos:
+*beginDialog, iniciar un dialogo, en el dialogo principal podemos iniciar otro dialogo luego de "preguntar su nombre"
+*endDialog, finalizar dialogo
+*endDialogWithResults, finalizar un dialogo con resultado.
+*replaceDialog, sacar de la pila el dialogo actual y reemplazarlo por el siguiente que estamos haciendo al momento
+*cancelDialog, cancelar un dialogo
+*endConversation, finalizar una conversacion completamente.

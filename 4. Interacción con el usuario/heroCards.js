@@ -1,3 +1,8 @@
+/**
+ * ejercicio 03
+ * aqui aprenderemos a como utilizar tarjetas, para mostrar de una forma mas elegante
+ * cualquier tipo de informacion al usuario.
+ */
 var restify = require('restify');
 var builder = require('botbuilder');
 
@@ -20,6 +25,16 @@ server.post('/api/messages', connector.listen());
 // Dialogos
 bot.dialog('/', [
     function (session) {
+        /**
+         * un hero card, es un tipo de tarjeta que permite mostrar basicamente de todo un poco
+         * imagenes, botones links, etc
+         * esta se crea a traves del builderHeroCard,
+         * pasando como parametros de configuracion un set de atributos, como el titulo, subtitulo
+         * images, textos entre otros.
+         * notese tambien como dentro de la imagen se carga un CardImage con la url de la imagen
+         * y en el buttons se carga un CardAction.openUrl, lo que indica que se debe abrir la url
+         * pasada por parametro.
+         */
         var heroCard = new builder.HeroCard(session)
             .title('Esta es una tarjeta de tipo Hero Card')
             .subtitle('Este es su correspondente subtítulo')
@@ -32,6 +47,10 @@ bot.dialog('/', [
             ]);
 
         // Adjuntamos la tarjeta al mensaje
+        /**
+         * aqui agregamos el heroCard al mensaje que se le va a mandar al usuario
+         * y a traves de un session.send emitimos dicho mensaje.
+         */
         var msj = new builder.Message(session).addAttachment(heroCard);
         session.send(msj);
     }

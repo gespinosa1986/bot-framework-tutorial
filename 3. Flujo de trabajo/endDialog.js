@@ -1,3 +1,6 @@
+/**
+ * ejercicio 02
+ */
 var restify = require('restify');
 var builder = require('botbuilder');
 
@@ -18,6 +21,16 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 // Dialogos
+/**
+ * ene ste ejemplo relizaremos la finalizacion de un dialogo de una forma un poco distinta
+ * en primer lugar en nuestro dialogo raiz, preguntamos por el nombre del usuario
+ * luego iniciamos el dialogo "/preguntarLugar"
+ * donde se pregunta donde esta la persona
+ * pero notese como en aquel dialogo se hace un endDialogWithResult donde se finaliza el dialogo
+ * retornando el resultado que indico el usuario y este valor
+ * es retornado desde el dialogo principal.
+ * esto es otra forma de finalizar dialogos.
+ */
 bot.dialog('/', [
     function (session) {
         builder.Prompts.text(session, '¿Cómo te llamas?');

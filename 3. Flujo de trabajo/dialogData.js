@@ -1,3 +1,8 @@
+/**
+ * ejercicio #04
+ * aqui almacenaremos informacion que es persistente unicamente en un dialogo
+ * y veremos como al ir cambiando de dialogos, esa data ya no es accesible.
+ */
 var restify = require('restify');
 var builder = require('botbuilder');
 
@@ -18,6 +23,25 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 // Dialogos
+/**
+ * creamos nuestro set de dialogos, compuesto por un dialogo raiz, donde se le pregunta el nombre 
+ * al usuario, y posteriormente se hace una transision al dialogo preguntar lugar.
+ * en dicho dialogo(/preguntarLugar), se le pregunta al usuario en donde se encuentra
+ * y dicha informacion es almacenada en el dialogData del session.
+ * finalmente terminamos el dialogo con endDialog y saludamos diciendo el lugar del usuario
+ * y especificando que nos acordamos en dicho dialogo donde esta.
+ * ahora bien, cuando volvemos al dialogo raiz (recordemos pila de dialogos al ir finalizando vamos volviendo),
+ * vemos como si la data no esta en el userData, no tenemos acceso a ella por lo que se imprime un 
+ * "ya no me acuerdo donde estas".
+ * existe 
+ */
+
+ /**
+  * recordando:
+  * userData, es informacion para el usuario que persiste en todas las conversaciones
+  * dialogData, es informacion que es solo visible en el dialogo donde es creada
+  * conversationData, es informacion que es visible a todos los miembros de una conversacion.
+  */
 bot.dialog('/', [
     function (session) {
         builder.Prompts.text(session, '¿Cómo te llamas?');

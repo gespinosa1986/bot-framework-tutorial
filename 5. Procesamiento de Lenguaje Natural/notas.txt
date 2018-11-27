@@ -1,0 +1,10 @@
+*Intents: son las intenciones, estan relacionadas con funcionalidades del sistema, y describen lo que el usuario quiere hacer
+          ejemplo:
+            *Quiero encender la luz, lo que da como intent "EncenderLuz"
+            *Por favor mandarme un taxi, lo que da como intent "EnviarTaxi"
+
+*Entity: representan los "parametros" de los intents, es decir representa la entidad que el usuario quiere se le aplique su intent.
+         ejemplo:
+            *Quiero encender la luz de la cocina, intent: "EncenderLuz", entity: "Lugar: Cocina"
+            *Por favor mandarme un taxi para irarrazaval, intent "EnviarTaxi", entity: "Localizacion: Irarrazaval"
+

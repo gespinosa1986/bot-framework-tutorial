@@ -1,3 +1,8 @@
+/**
+ * ejercicio 04
+ * aqui aprenderemos a como utilizar un carusel
+ * como sabemos, un carusel esta conformado por un set de tarjetas 2 o mas.
+ */
 var restify = require('restify');
 var builder = require('botbuilder');
 
@@ -20,6 +25,10 @@ server.post('/api/messages', connector.listen());
 // Dialogos
 bot.dialog('/', [
     function (session) {
+        /**
+         * podemos ver en este dialogo como definimos un par de heroCards
+         * (ver archivo heroCard para conocer sus caracteristicas)
+         */
         var heroCard1 = new builder.HeroCard(session)
             .title('Esta es una tarjeta de tipo Hero Card')
             .subtitle('Este es su correspondente subtítulo')
@@ -41,10 +50,17 @@ bot.dialog('/', [
             .buttons([
                 builder.CardAction.openUrl(session, 'https://docs.botframework.com/en-us/', 'Aprende')
             ]);
-
+        
+        /**
+         * luego creamos un arreglo de tarjetas, donde pasamos los 2 heroCards creados
+         */
         // Creamos un array de tarjetas
         var tarjetas = [heroCard1, heroCard2];
-
+        /**
+         * y finalmente en el mensaje adjuntamos las tarjetas a traves de un AttachmentLayout.carousel
+         * y con el metodo attachments agregamos el arreglo de tarjetas.
+         * para finalmente mandar el mensaje con el carusel a traves del send de session.
+         */
         // Adjuntamos la tarjeta al mensaje
         var msj = new builder.Message(session).attachmentLayout(builder.AttachmentLayout.carousel).attachments(tarjetas);
         session.send(msj);

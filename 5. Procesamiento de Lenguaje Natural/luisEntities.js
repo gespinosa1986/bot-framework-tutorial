@@ -1,3 +1,8 @@
+/**
+ * ejercicio 02
+ * en este ejercicio aprenderemos a detectar las entities que nos devuelve LUIS
+ * y mostrar mensajes segun las entities recibidas. (LEER luisIntents, para conocer la logica de los IntentDialogs)
+ */
 var restify = require('restify');
 var builder = require('botbuilder');
 var dotenv = require('dotenv');
@@ -35,8 +40,21 @@ bot.dialog('/', dialog);
 dialog.matches('ordenarTaxi', [
     function (session, args, next) {
         // Extraer las entidades reconocidas por LUIS
+        /**
+         * para encontrar las entidades encontradas en la respuesta que nos manda LUIS
+         * procedemos a crear un builder.EntityRecognizer y a su vez
+         * utilizamos el metodo "findAllEntities", donde en primer lugar extraemos
+         * las entidades que se encuentran dentro del objeto "args" en el atributo "entities",
+         * como segundo parametro debemos mandarle el tipo de entidad que debe extraer ("lugar")
+         * este nombre o tipo de entidad debe coincidir con las establecidas en LUIS
+         */
         var barrios = builder.EntityRecognizer.findAllEntities(args.entities, 'lugar');
-
+        /**
+         * como logica extra agregamos, si tenemos al menos 1 barrio dentro del arreglo de barrio
+         * el mensaje tiene la forma de "enviando un taxi al barrio [0]"
+         * y si el barrio tiene al menos otro barrio extra agregamos mas string al mensaje
+         * para finalmente mandar el mensaje a traves del session.send
+         */
         if (barrios.length > 0) {
             let msj = 'Enviando un taxi';
             msj += ` de **${barrios[0].entity}**`;
@@ -47,6 +65,11 @@ dialog.matches('ordenarTaxi', [
 
             session.send(msj);
         }
+        /**
+         * en caso de no existir ningun barrio, mandaremos el texto "a donde lo envio" ya que no se tiene
+         * o no se consiguio ninguna entidad en la respuesta de LUIS, por lo que deberian agregarse nuevas
+         * funciones al motor de nuestra app en LUIS
+         */
         else {
             session.send('¿A dónde lo envío?');
         }
